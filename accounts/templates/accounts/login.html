@@ -3,13 +3,11 @@
 {% block body %}
 <div class="container">
   <div class="row">
-
     <h1>Welcome!</h1>
-    <h4>Log in below...</h4>
-
   </div>
   <div class="row">
-    <form class="form-group" action="index.html" method="post">
+    <form class="form-group" action="" method="post">
+      <h3>Login</h3>
       {% csrf_token %}
       {{ form.as_p }}
       <button type="submit" class="btn btn-primary" name="button">Login</button>
