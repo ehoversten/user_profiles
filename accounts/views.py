@@ -12,6 +12,7 @@ def index(request):
     return render(request, 'accounts/index.html', context)
 
 
+
 def register(request):
     if request.method == 'POST':
         # form = UserCreationForm(request.POST)
