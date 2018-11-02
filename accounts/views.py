@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, HttpResponse
 # from django.contrib.auth.forms import UserCreationForm
 from accounts.forms import RegistrationForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -31,6 +32,7 @@ def register(request):
 
         return render(request, "accounts/reg_form.html", context)
 
+@login_required
 def profile(request):
     context = {
         'user': request.user

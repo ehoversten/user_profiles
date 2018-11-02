@@ -2,7 +2,7 @@ from django.conf.urls import url
 from django.contrib.auth.views import login, logout
 from . import views
 
-app_name = 'accounts'
+# app_name = 'accounts'
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
