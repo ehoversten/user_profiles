@@ -6,11 +6,13 @@
     <h1>Dashboard Page</h1>
   </div>
   <div class="row">
-    <form class="form-group"  method="post">
-      {% csrf_token %}
-      <h2>Post</h2>
-      {{ form.as_p }}
-      <button class="btn btn-primary" type="submit" name="button">Submit</button>
+    <form method="post">
+      <div class="form-group">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <!-- {{ form.post }} -->
+        <button class="btn btn-primary" type="submit" name="button">Submit</button>
+      </div>
     </form>
   </div>
   <div class="row">
@@ -22,7 +24,7 @@
       <li>
         <h4>{{ post.post }}</h4>
         <p>Posted by {{ post.user.get_full_name }} on {{ post.created }}</p>
-      </li> 
+      </li>
     {% endfor %}
   </ul>
 </div>
