@@ -13,12 +13,11 @@ class HomeView(TemplateView):
     def get(self, request):
         # initalize form instance
         form = HomeForm()
-        posts = Post.objects.all()
+        posts = Post.objects.all().order_by('-created')
 
         context = {
             'form' : form,
             'posts': posts,
-
         }
         return render(request, self.template_name, context)
 
@@ -35,6 +34,5 @@ class HomeView(TemplateView):
         context = {
             'form' : form,
             'text' : text,
-
         }
-        return render(request, self.template_name, context)
+        return redirect('home:dashboard')

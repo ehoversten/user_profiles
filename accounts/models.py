@@ -17,6 +17,9 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.username
 
+    def __repr__(self):
+        return "<ID: {} - User: {}>".format(self.id, self.user)
+
 
 def create_profile(sender, **kwargs):
     if kwargs['created']:
@@ -24,6 +27,3 @@ def create_profile(sender, **kwargs):
 
 
 post_save.connect(create_profile, sender=User)
-
-
-# objects = models.Manager()﻿

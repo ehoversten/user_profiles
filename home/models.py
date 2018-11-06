@@ -13,4 +13,5 @@ class Post(models.Model):
         return self.post
 
     def __repr__(self):
-        return self.post
+        # return "<ID: {} - Post object: {}>".format(self.id, self.post)
+        return "<PK: {} - Post object: {}>".format(self.pk, self.post)
