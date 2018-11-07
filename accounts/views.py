@@ -34,9 +34,13 @@ def register(request):
         return render(request, "accounts/reg_form.html", context)
 
 @login_required
-def profile(request):
+def profile(request, pk=None):
+    if pk:
+        user = User.objects.get(pk=pk)
+    else:
+        user = request.user
     context = {
-        'user': request.user
+        'user': user,
     }
 
     return render(request, 'accounts/profile.html', context)

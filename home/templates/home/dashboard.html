@@ -20,7 +20,7 @@
     <div class="col-md-4">
       <h1>Other People</h1>
       {% for user in users %}
-        <a href="{% url 'accounts:profile'%}">
+        <a href="{% url 'accounts:profile_with_pk' pk=user.pk %}">
           <h3>{{ user.username }}</h3>
         </a>
       {% if not user in friends %}
