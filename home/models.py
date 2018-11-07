@@ -8,10 +8,23 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
-
     def __str__(self):
         return self.post
 
     def __repr__(self):
         # return "<ID: {} - Post object: {}>".format(self.id, self.post)
         return "<PK: {} - Post object: {}>".format(self.pk, self.post)
+
+class Friend(models.Model):
+    users = models.ManyToManyField(User)
+    current_user = models.ForeignKey(User, related_name='owner', null=True)
+
+    @classmethod
+    def make_friend(cls, current_user, new_friend):
+        friend, created = cls.objects.get_or_create(current_user=current_user)
+        friend.users.add(new_friend)
+
+    @classmethod
+    def toss_friend(cls, current_user, new_friend):
+        friend, created = cls.objects.get_or_create(current_user=current_user)
+        friend.users.remove(new_friend)
