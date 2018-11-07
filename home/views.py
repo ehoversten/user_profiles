@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect
-from .models import Post
+from django.contrib.auth.models import User
+from home.models import Post
 
 from home.forms import HomeForm
 # Create your views here.
@@ -14,10 +15,12 @@ class HomeView(TemplateView):
         # initalize form instance
         form = HomeForm()
         posts = Post.objects.all().order_by('-created')
+        users = User.objects.exclude(id=request.user.id)
 
         context = {
             'form' : form,
             'posts': posts,
+            'users': users
         }
         return render(request, self.template_name, context)
 
